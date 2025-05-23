@@ -1,93 +1,86 @@
-# E-commerce Server Architecture
+Arquitectura de Servidor E-commerce
 
-A professional Node.js e-commerce server implementing DAO, DTO, and Repository patterns with middleware authorization and a complete purchase flow system.
+Un servidor profesional de e-commerce desarrollado con Node.js que implementa los patrones DAO, DTO y Repositorio, con autorización mediante middleware y un sistema completo de flujo de compra.
 
-## Features
+⸻
 
-- **Advanced Architecture Patterns**
-  - Data Access Objects (DAO) for database operations
-  - Data Transfer Objects (DTO) for secure data transmission
-  - Repository pattern for clean business logic
-  - Service layer for application logic
+Funcionalidades
 
-- **Authentication**
-  - JWT-based authentication
-  - Role-based authorization (admin, user)
-  - Secure password handling with bcrypt
+🧱 Patrones Avanzados de Arquitectura
+	•	Objetos de Acceso a Datos (DAO) para operaciones con la base de datos.
+	•	Objetos de Transferencia de Datos (DTO) para transmisión segura de datos.
+	•	Patrón Repositorio para mantener una lógica de negocio limpia.
+	•	Capa de Servicios para la lógica de aplicación.
 
-- **Product Management**
-  - CRUD operations for products
-  - Product filtering and pagination
-  - Admin-only product management
+🔐 Autenticación
+	•	Autenticación basada en JWT.
+	•	Autorización basada en roles (admin, usuario).
+	•	Manejo seguro de contraseñas con bcrypt.
 
-- **Cart System**
-  - User-specific carts
-  - Add, update, remove products
-  - Cart purchase flow with stock validation
+📦 Gestión de Productos
+	•	Operaciones CRUD para productos.
+	•	Filtrado y paginación de productos.
+	•	Gestión de productos solo disponible para administradores.
 
-- **Purchase Process**
-  - Stock verification during checkout
-  - Ticket generation for completed purchases
-  - Partial purchase support for out-of-stock items
+🛒 Sistema de Carrito
+	•	Carritos específicos por usuario.
+	•	Agregar, actualizar y eliminar productos del carrito.
+	•	Flujo de compra con validación de stock.
 
-## Installation
+💳 Proceso de Compra
+	•	Verificación de stock durante el checkout.
+	•	Generación de ticket para compras completadas.
+	•	Soporte para compras parciales cuando hay productos sin stock.
 
-1. Clone the repository
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Set up environment variables (see `.env.example`)
-4. Start the server:
-   ```
-   npm start
-   ```
+  Endpoints de la API
 
-## API Endpoints
+🔑 Autenticación
+	•	POST /api/auth/register – Registrar nuevo usuario
+	•	POST /api/auth/login – Iniciar sesión
+	•	GET /api/auth/current – Obtener usuario actual
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/current` - Get current user
+📦 Productos
+	•	GET /api/products – Obtener todos los productos
+	•	GET /api/products/:id – Obtener producto por ID
+	•	POST /api/products – Crear nuevo producto (solo admin)
+	•	PUT /api/products/:id – Actualizar producto (solo admin)
+	•	DELETE /api/products/:id – Eliminar producto (solo admin)
 
-### Products
-- `GET /api/products` - Get all products
-- `GET /api/products/:id` - Get product by id
-- `POST /api/products` - Create new product (admin only)
-- `PUT /api/products/:id` - Update product (admin only)
-- `DELETE /api/products/:id` - Delete product (admin only)
+🛒 Carritos
+	•	GET /api/carts/:cid – Obtener carrito por ID
+	•	POST /api/carts – Crear nuevo carrito
+	•	POST /api/carts/:cid/products/:pid – Agregar producto al carrito
+	•	DELETE /api/carts/:cid/products/:pid – Eliminar producto del carrito
+	•	PUT /api/carts/:cid/products/:pid – Actualizar cantidad de producto en el carrito
+	•	DELETE /api/carts/:cid – Vaciar carrito
+	•	POST /api/carts/:cid/purchase – Comprar carrito
 
-### Carts
-- `GET /api/carts/:cid` - Get cart by id
-- `POST /api/carts` - Create new cart
-- `POST /api/carts/:cid/products/:pid` - Add product to cart
-- `DELETE /api/carts/:cid/products/:pid` - Remove product from cart
-- `PUT /api/carts/:cid/products/:pid` - Update product quantity in cart
-- `DELETE /api/carts/:cid` - Clear cart
-- `POST /api/carts/:cid/purchase` - Purchase cart
+⸻
 
-## Architecture
+Arquitectura
 
-The project follows a layered architecture:
+El proyecto sigue una arquitectura por capas:
+	•	Routes – Definen los endpoints de la API
+	•	Controllers – Manejan la solicitud y respuesta
+	•	Services – Implementan la lógica de negocio
+	•	Repositories – Implementan patrones de acceso a datos
+	•	DAOs – Interactúan directamente con la base de datos
+	•	Models – Definen la estructura de los datos
+	•	DTOs – Aseguran la transferencia segura de datos
+	•	Middlewares – Procesan las solicitudes
+	•	Utils – Funciones auxiliares
+	•	Config – Configuración de la aplicación
 
-1. **Routes** - Define API endpoints
-2. **Controllers** - Handle request/response
-3. **Services** - Implement business logic
-4. **Repositories** - Implement data access patterns
-5. **DAOs** - Interact with the database
-6. **Models** - Define data structure
-7. **DTOs** - Secure data transfer
-8. **Middlewares** - Process requests
-9. **Utils** - Helper functions
-10. **Config** - Application configuration
+⸻
 
-## Database
+Base de Datos
 
-The application uses MongoDB with Mongoose as the ODM (Object Document Mapper).
+La aplicación utiliza MongoDB junto con Mongoose como el ODM (Mapeador de Objetos-Documentos).
 
-## Security
+⸻
 
-- JWT for authentication
-- Bcrypt for password hashing
-- Role-based access control
-- Data sanitization using DTOs# final-backend2
+Seguridad
+	•	Autenticación con JWT
+	•	Hash de contraseñas con bcrypt
+	•	Control de acceso basado en roles
+	•	Sanitización de datos usando DTOs
